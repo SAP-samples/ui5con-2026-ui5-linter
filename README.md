@@ -1,41 +1,40 @@
-# SAP-samples/repository-template
-This default template for SAP Samples repositories includes files for README, LICENSE, and REUSE.toml. All repositories on github.com/SAP-samples will be created based on this template.
+![OpenUI5 logo](http://openui5.org/images/OpenUI5_new_big_side.png)
 
-# Containing Files
+# UI5 linter Workshop - Sample App
 
-1. The LICENSE file:
-In most cases, the license for SAP sample projects is `Apache 2.0`.
+> **UI5con 2026 Hands-on Workshop:** Modernizing Legacy UI5 Applications with UI5 Linter
 
-2. The REUSE.toml file: 
-The [Reuse Tool](https://reuse.software/) must be used for your samples project. You can find the REUSE.toml in the project initial. Please replace the parts inside the single angle quotation marks < > by the specific information for your repository.
+This repository contains the demo project for the **UI5 linter Hands-On** at [UI5con 2026](https://openui5.org/ui5con/). It is a variant of the OpenUI5 Todo sample application available at [github.com/UI5/sample-app](https://github.com/UI5/sample-app).
 
-3. The README.md file (this file):
-Please edit this file as it is the primary description file for your project. You can find some placeholder titles for sections below.
+## Workshop Materials
 
-# [Title]
-<!-- Please include descriptive title -->
+**Start here:** [hands-on-lectures/00-overview.md](hands-on-lectures/00-overview.md)
 
-<!--- Register repository https://api.reuse.software/register, then add REUSE badge:
-[![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/REPO-NAME)](https://api.reuse.software/info/github.com/SAP-samples/REPO-NAME)
--->
+The workshop is divided into the following sections:
 
-## Description
-<!-- Please include SEO-friendly description -->
+1. [Introduction & Setup](hands-on-lectures/01-introduction-setup.md) (10 min)
+2. [Running UI5 Linter - First Analysis](hands-on-lectures/02-running-linter.md) (10 min)
+3. [Understanding Linter Rules](hands-on-lectures/03-understanding-rules.md) (10 min)
+4. [Hands-on: Auto-fixing Issues](hands-on-lectures/04-autofix.md) (15 min)
+5. [Hands-on: Manual Fixes](hands-on-lectures/05-manual-fixes.md) (15 min)
+6. [Best Practices & Wrap-up](hands-on-lectures/06-best-practices.md) (5 min)
 
-## Requirements
+Reference: [Appendix - Legacy Patterns](hands-on-lectures/07-appendix.md)
 
-## Download and Installation
+## About This Demo Project
 
-## Known Issues
-<!-- You may simply state "No known issues. -->
+> [!IMPORTANT]
+> This project **intentionally contains legacy code patterns** for educational purposes. Attendees will identify and fix these issues step-by-step during the workshop using the [UI5 linter](https://github.com/UI5/linter).
 
-## How to obtain support
-[Create an issue](https://github.com/SAP-samples/<repository-name>/issues) in this repository if you find a bug or have questions about the content.
- 
-For additional support, [ask a question in SAP Community](https://answers.sap.com/questions/ask.html).
+**Do not use this code as a reference for best practices!** The legacy patterns include:
+- Deprecated APIs (`jQuery.sap.*`, `sap.ui.controller()`, etc.)
+- Global variable access
+- Deprecated themes and libraries
+- CSP-violating inline scripts
+- Legacy test setup
 
-## Contributing
-If you wish to contribute code, offer fixes or improvements, please send a pull request. Due to legal reasons, contributors will be asked to accept a DCO when they create the first pull request to this project. This happens in an automated fashion during the submission process. SAP uses [the standard DCO text of the Linux Foundation](https://developercertificate.org/).
+Checkout [github.com/UI5/sample-app](https://github.com/UI5/sample-app) for the original version of this application, following best practices and using modern API.
 
-## License
-Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](LICENSE) file.
+### Final Result
+
+The modernized version of this application (with all linter issues resolved) is available on the **[`final-result`](../../tree/final-result)** branch.
