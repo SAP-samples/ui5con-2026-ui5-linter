@@ -2,7 +2,7 @@
 
 # UI5 linter Workshop - Sample App
 
-> **UI5con 2026 Hands-on Workshop:** Modernizing Legacy UI5 Applications with UI5 Linter
+> **UI5con 2026 Bengaluru Hands-on Workshop:** Modernizing Legacy UI5 Applications with UI5 Linter
 
 This repository contains the demo project for the **UI5 linter Hands-On** at [UI5con 2026](https://openui5.org/ui5con/). It is a variant of the OpenUI5 Todo sample application available at [github.com/UI5/sample-app](https://github.com/UI5/sample-app).
 
