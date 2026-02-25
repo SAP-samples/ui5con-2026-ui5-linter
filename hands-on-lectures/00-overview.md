@@ -1,7 +1,7 @@
 # UI5 Linter Workshop: Modernizing Legacy UI5 Applications
 
-**Exercise Duration:** 45 Minutes
-**Target Audience:** Professional UI5 developers
+**Exercise Duration:** 45 Minutes  
+**Target Audience:** Professional UI5 developers  
 **Prerequisites:** Basic UI5 development experience, Node.js installed (test using `node -v`)
 
 ## Workshop Overview
