@@ -12,12 +12,12 @@ This repository contains the demo project for the **UI5 linter Hands-On** at [UI
 
 The workshop is divided into the following sections:
 
-1. [Introduction & Setup](hands-on-lectures/01-introduction-setup.md) (10 min)
+1. [Introduction & Setup](hands-on-lectures/01-introduction-setup.md) (5 min)
 2. [Running UI5 Linter - First Analysis](hands-on-lectures/02-running-linter.md) (10 min)
-3. [Understanding Linter Rules](hands-on-lectures/03-understanding-rules.md) (10 min)
-4. [Hands-on: Auto-fixing Issues](hands-on-lectures/04-autofix.md) (15 min)
+3. [Understanding Linter Rules](hands-on-lectures/03-understanding-rules.md) (5 min)
+4. [Hands-on: Auto-fixing Issues](hands-on-lectures/04-autofix.md) (10 min)
 5. [Hands-on: Manual Fixes](hands-on-lectures/05-manual-fixes.md) (15 min)
-6. [Best Practices & Wrap-up](hands-on-lectures/06-best-practices.md) (5 min)
+6. [Best Practices & Wrap-up](hands-on-lectures/06-best-practices.md) (optional/informational)
 
 Reference: [Appendix - Legacy Patterns](hands-on-lectures/07-appendix.md)
 
