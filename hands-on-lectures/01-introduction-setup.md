@@ -30,7 +30,7 @@ ui5lint --version
 ```bash
 # Clone the demo project
 git clone git@github.com:SAP-samples/ui5con-2026-ui5-linter.git
-cd openui5-sample-app
+cd ui5con-2026-ui5-linter
 
 # Install dependencies (includes UI5 linter as dev dependency)
 npm install
