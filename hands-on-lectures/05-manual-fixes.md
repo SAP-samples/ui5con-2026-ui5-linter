@@ -653,6 +653,8 @@ sap.ui.define(() => {
 
 5. Verify that all tests are passing by starting the server (`npm start`) and navigating to [`http://localhost:8080/test/testsuite.qunit.html`](http://localhost:8080/test/testsuite.qunit.html)
 
+6. Press "Run all" and observe the test result
+
 You should see a message saying that all 10 tests have passed.
 
 ---
