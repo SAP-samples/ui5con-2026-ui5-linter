@@ -1,15 +1,15 @@
-# Section 5: Hands-on: Manual Fixes (15 min)
+# Section 5: Hands-on: Manual Fixes (15 min) #
 
 [← Previous: Hands-on: Auto-fixing Issues](04-autofix.md) | [Back to Overview](00-overview.md)
 
 ---
 
-## 5.1 Fix: Controller Module Pattern
+## 5.1 Fix: Controller Module Pattern ##
 
 The legacy pattern uses `jQuery.sap.declare()`, multiple `jQuery.sap.require()` calls, and `sap.ui.controller()`. The modern pattern uses `sap.ui.define()` with explicit dependencies.
 
 > [!TIP]
-> 💡 **Exercise:** Migrate the controller to the modern `sap.ui.define()` pattern as shown below.
+> 💡 **Exercise:** Migrate the controller at `webapp/controller/App.controller.js` to the modern `sap.ui.define()` pattern as shown below.
 
 **Before (Legacy):**
 ```javascript
@@ -64,7 +64,7 @@ sap.ui.define([
 
 ---
 
-## 5.2 Fix: Global Variable Access and Deprecated APIs
+## 5.2 Fix: Global Variable Access and Deprecated APIs ##
 
 The `onAfterRendering()` method also contains several issues that must be fixed together:
 
@@ -100,6 +100,40 @@ onAfterRendering() {
 Run `ui5lint` again to verify that all issues in `App.controller.js` are resolved.
 
 Start the app (using `npm start` and navigating to [`http://localhost:8080/index.html`](http://localhost:8080/index.html)) and verify that the avatar image is still loading correctly. This confirms that the manual changes were successful and did not break functionality.
+
+---
+
+## 5.3 Run Autofix Again ##
+
+> [!TIP]
+> 💡 **Exercise:** After completing these manual fixes, run autofix again:
+
+```bash
+ui5lint --fix
+```
+
+Remember the "blocked autofix" from Section 4.3? Now that the controller uses `sap.ui.define()`, the linter can fix additional issues that were previously blocked. The problem count drops significantly:
+
+- **Before autofix:** 28 problems (22 errors, 6 warnings)
+- **After autofix:** 13 problems (8 errors, 5 warnings)
+
+Check what changed in the XML view:
+```bash
+git diff webapp/view/App.view.xml
+
+# Don't worry if this command is showing an error. This might be because you downloaded the archive instead of cloning the repository.
+# You can see the differences outlined below as well.
+```
+
+You should see that the event handler in `App.view.xml` now has the `.` prefix:
+```diff
+- press="onClearCompleted"
++ press=".onClearCompleted"
+```
+
+This demonstrates the iterative workflow: **manual fix → autofix → manual fix → autofix** that is often required to fully modernize a legacy codebase.
+
+---
 
 <details>
 <summary><strong>Click to reveal the complete migrated App.controller.js</strong></summary>
@@ -292,41 +326,9 @@ sap.ui.define([
     });
 });
 ```
-
 </details>
 
----
-
-## 5.3 Run Autofix Again
-
-> [!TIP]
-> 💡 **Exercise:** After completing these manual fixes, run autofix again:
-
-```bash
-ui5lint --fix
-```
-
-Remember the "blocked autofix" from Section 4.3? Now that the controller uses `sap.ui.define()`, the linter can fix additional issues that were previously blocked. The problem count drops significantly:
-
-- **Before autofix:** 28 problems (22 errors, 6 warnings)
-- **After autofix:** 13 problems (8 errors, 5 warnings)
-
-Check what changed in the XML view:
-```bash
-git diff webapp/view/App.view.xml
-```
-
-You should see that the event handler in `App.view.xml` now has the `.` prefix:
-```diff
-- press="onClearCompleted"
-+ press=".onClearCompleted"
-```
-
-This demonstrates the iterative workflow: **manual fix → autofix → manual fix → autofix** that is often required to fully modernize a legacy codebase.
-
----
-
-## 5.4 Fix: Deprecated Theme
+## 5.4 Fix: Deprecated Theme ##
 
 Themes like `sap_goldreflection`, `sap_bluecrystal`, and `sap_hcb` are deprecated. Using deprecated themes may cause problems. They will also be removed from future UI5 versions.
 
@@ -345,7 +347,7 @@ Themes like `sap_goldreflection`, `sap_bluecrystal`, and `sap_hcb` are deprecate
 
 ---
 
-## 5.5 Fix: Deprecated Library
+## 5.5 Fix: Deprecated Library ##
 
 The `sap.ui.commons` library was the original UI5 control library, but it has been deprecated since UI5 1.38 (2016) in favor of `sap.m`. The use of deprecated libraries should generally be avoided. They no longer receive non-critical bug fixes and will be removed in future UI5 versions. They can also cause performance problems, and lack important accessibility improvements, and modern features.
 
@@ -364,7 +366,7 @@ The `sap.ui.commons` library was the original UI5 control library, but it has be
 
 ---
 
-## 5.6 Fix: Manifest Version
+## 5.6 Fix: Manifest Version ##
 
 Updating the manifest version to 2.0.0 enables modern features but also requires removing deprecated properties.
 
@@ -376,7 +378,16 @@ Updating the manifest version to 2.0.0 enables modern features but also requires
 "_version": "2.0.0"
 ```
 
-After updating the version, run the linter again. You'll see a new error:
+After updating the version, run the linter again and limit it to check only the `manifest.json`:
+
+```bash
+ui5lint webapp/manifest.json
+```
+
+> [!TIP]
+> You can specify individual files or directories as arguments to `ui5lint` to focus on specific areas of the codebase.
+
+You'll see a new error:
 
 ```
 Property '/sap.ui5/rootView/async' has been removed in Manifest Version 2
@@ -407,6 +418,17 @@ In Manifest Version 2, asynchronous root view loading is the default behavior, s
 ```
 
 This is an example of how **migrating to newer versions may require additional changes**. Always re-run the linter after making changes to catch newly introduced issues.
+
+Verify that all `manifest.json` problems are resolved by running the linter the file one last time:
+
+```bash
+ui5lint webapp/manifest.json
+```
+
+> [!TIP]
+> You can specify individual files or directories as arguments to `ui5lint` to focus on specific areas of the codebase.
+
+---
 
 <details>
 <summary><strong>Click to reveal the complete migrated manifest.json</strong></summary>
@@ -474,19 +496,9 @@ This is an example of how **migrating to newer versions may require additional c
 
 </details>
 
-Verify that all `manifest.json` problems are resolved by running the linter only on that file:
-
-```bash
-ui5lint webapp/manifest.json
-```
-
-> [!TIP]
-> You can specify individual files or directories as arguments to `ui5lint` to focus on specific areas of the codebase.
-
-
 ---
 
-## 5.7 Fix: Unsafe Inline Script (CSP Compliance)
+## 5.7 Fix: Unsafe Inline Script (CSP Compliance) ##
 
 The linter detects inline scripts that violate Content Security Policy (CSP) restrictions:
 
@@ -534,7 +546,7 @@ In many cases, inline configuration scripts are not needed at all. Consider:
 
 ---
 
-## 5.8 Fix: Migrate to Test Starter
+## 5.8 Fix: Migrate to Test Starter ##
 
 The linter recommends migrating legacy QUnit test setups to the modern Test Starter concept:
 
@@ -643,7 +655,7 @@ You should see a message saying that all 10 tests have passed.
 
 ---
 
-## 5.9 Fix Helper Module (Try It Yourself!)
+## 5.9 Fix Helper Module (Try It Yourself!) ##
 
 > [!TIP]
 > 💡 **Exercise:** The final remaining issue is in `webapp/util/Helper.js`. Apply what you learned to fix it!
@@ -689,7 +701,7 @@ sap.ui.define([], () => {
 
 </details>
 
-### Alternative: Suppressing Findings with Directives
+### Alternative: Suppressing Findings with Directives ###
 
 In some cases, you may not be able to fix a finding immediately. For example, when dealing with third-party code, or complex migrations that require more time. UI5 linter supports **directives** that allow you to suppress specific findings.
 
@@ -728,7 +740,7 @@ ui5lint
 
 ---
 
-## 5.10 Verify All Issues Are Resolved
+## 5.10 Verify All Issues Are Resolved ##
 
 > [!TIP]
 > 💡 **Exercise:** After completing all manual fixes and autofixes, run the linter one final time:

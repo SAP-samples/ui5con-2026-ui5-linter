@@ -41,7 +41,7 @@ npm start
 
 Open the app in your browser: [`http://localhost:8080/index.html`](http://localhost:8080/index.html)
 
-If the `git clone` command fails, you can also download the repository as a ZIP file [here](https://github.com/SAP-samples/ui5con-2026-ui5-linter/archive/refs/heads/main.zip).
+If the `git clone` command fails, you can also download the repository as a ZIP file [here](https://github.com/SAP-samples/ui5con-2026-ui5-linter/archive/refs/heads/main.zip). Note that you won't be able to use the `git` command to check differences after running the linter, but you can still follow along with the exercises.
 
 ---
 

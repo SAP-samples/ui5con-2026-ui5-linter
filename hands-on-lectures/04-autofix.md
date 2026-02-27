@@ -24,6 +24,9 @@ The UI5 linter autofix can automatically transform several types of issues. Let'
 
 ```bash
 git diff
+
+# Don't worry if this command is showing an error. This might be because you downloaded the archive instead of cloning the repository.
+# You can see the differences outlined below as well.
 ```
 
 ### 1. Deprecated API Replacements
