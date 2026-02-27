@@ -518,7 +518,21 @@ The linter detects inline scripts that violate Content Security Policy (CSP) res
 
 Inline scripts are a security vulnerability. CSP-compliant browsers only execute scripts loaded from allowed sources. Inline scripts bypass this protection and are commonly exploited in XSS (Cross-Site Scripting) attacks.
 
-**Solution: Move to external file**
+**Solution 1: Remove if unnecessary**
+
+In many cases, inline configuration scripts are not needed at all. Consider:
+- Using `manifest.json` for app configuration
+- Using URL parameters for debug flags
+- Upgrading third-party libraries that might have required inline scripts in older versions
+
+For this demo app, the inline script serves no real purpose and **can be deleted entirely.**
+
+> [!TIP]
+> 💡 **Exercise:** Remove the inline script from `index.html` to fix the CSP violation.
+
+**Solution 2: Move to external file**
+
+In case the inline script is still needed, its content should be moved to an external JavaScript file that is loaded via a `<script src="...">` tag or as part of a UI5 module. This way, the code will be executed without violating CSP.
 
 Create a new file `webapp/config.js`:
 ```javascript
@@ -531,18 +545,6 @@ Then reference it in `index.html`:
 ```html
 <script src="config.js"></script>
 ```
-
-**Alternative: Remove if unnecessary**
-
-In many cases, inline configuration scripts are not needed at all. Consider:
-- Using `manifest.json` for app configuration
-- Using URL parameters for debug flags
-- Simply removing unused configuration code
-
-**For this demo app, the inline script serves no real purpose and can be deleted entirely.**
-
-> [!TIP]
-> 💡 **Exercise:** Remove the inline script from `index.html` to fix the CSP violation.
 
 ---
 
