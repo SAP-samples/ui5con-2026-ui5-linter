@@ -1,4 +1,15 @@
-![OpenUI5 logo](http://openui5.org/images/OpenUI5_new_big_side.png)
+# Deprecation and Archival Notice
+
+This public repository is no longer maintained and has been archived.
+You can find information about open source at SAP and active projects at <https://opensource.sap.com/> and in our main GitHub organization at <https://github.com/SAP>.
+For the latest sample code repositories, visit the organization <https://github.com/SAP-samples>.
+If you have inquiries about the status of this repository, please contact ospo@sap.com.
+
+![](https://img.shields.io/badge/STATUS-NOT%20CURRENTLY%20MAINTAINED-red.svg?longCache=true&style=flat)
+
+---
+
+![OpenUI5 logo](http://openui5.org/images/OpenUI5_new_big_side.png)   
 
 # UI5 linter Workshop - Sample App
 
